@@ -84,6 +84,13 @@ class MQTTclient {
 		Process _output;
 		String _host;
 		String _port;
+		
+		String _clientId;
+		String _username;
+		String _password;
+		String _tlsVersion;
+		String _mqttVersion;
+		String _caFilePath;
 
 };
 
