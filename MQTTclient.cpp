@@ -31,6 +31,18 @@ void MQTTclient::begin(const String& host, const unsigned short& port) {
 	_port = String(port);
 }
 
+void MQTTclient::begin(const String& host, const unsigned short& port, const String& clientId ,const String& username, const String& password, const String& caFilePath, const String& mqttVer, const String& tlsVer) {
+	_host = host;
+	_port = String(port);
+	_clientId = clientId;
+	_username = username;
+	_password = password;
+	_tlsVersion = tlsVersion;
+	_mqttVersion = mqttVersion;
+	_caFilePath = caFilePath;
+}
+		
+
 void MQTTclient::monitor() {
 
 	for(int i = 0; i < MAX_TOPICS; i++) {
@@ -58,6 +70,22 @@ bool MQTTclient::publish(const String& topic, const String& msg) {
     _output.addParameter(_host);
     _output.addParameter(MQTT_PARAM_PORT);
     _output.addParameter(_port);
+
+    _output.addParameter(MQTT_PARAM_USERNAME);
+    _output.addParameter(_username);
+    _output.addParameter(MQTT_PARAM_PASSWORD);
+    _output.addParameter(_password);
+    _output.addParameter(MQTT_PARAM_CLIENT_ID);
+    _output.addParameter(_clientId);
+    _output.addParameter(MQTT_PARAM_MQTT_VERSION);
+    _output.addParameter(_mqttVersion);
+    _output.addParameter(MQTT_PARAM_TLS_VERSION);
+    _output.addParameter(_tlsVersion);
+    _output.addParameter(MQTT_PARAM_CAFILE);
+    _output.addParameter(_caFilePath);
+    
+    
+    
     _output.addParameter(MQTT_PARAM_TOPIC);
     _output.addParameter(topic);
     _output.addParameter(MQTT_PARAM_MSG);
