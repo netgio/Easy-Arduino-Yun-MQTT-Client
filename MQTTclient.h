@@ -36,6 +36,13 @@
 #define MQTT_PARAM_MSG "-m"
 #define MQTT_PARAM_VERBOSE "-v"
 #define MQTT_PARAM_PORT "-p"
+// Additional Param support
+#define MQTT_PARAM_CAFILE "--cafile"
+#define MQTT_PARAM_CLIENT_ID "-i"
+#define MQTT_PARAM_USER "-u"
+#define MQTT_PARAM_PASSWORD "-P"
+#define MQTT_PARAM_TLS_VERSION "--tls-version"
+#define MQTT_PARAM_MQTT_VERSION "-V"
 
 #define MAX_TOPICS 5
 
@@ -58,6 +65,7 @@ class MQTTclient {
 		MQTTclient();
 
 		void begin(const String& host, const unsigned short& port);
+		void begin(const String& host, const unsigned short& port, const String& clientId ,const String& username, const String& password, const String& caFilePath, const String& mqttVer, const String& tlsVer);
 		void monitor();
 
 		bool publish(const String& topic, const String& msg);
